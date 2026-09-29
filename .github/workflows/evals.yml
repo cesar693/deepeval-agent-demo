@@ -21,11 +21,12 @@ jobs:
       - name: Instalar dependencias
         run: |
           python -m pip install --upgrade pip
-          pip install deepeval langchain langchain-openai langchain-community langchain-text-splitters chromadb langgraph python-dotenv
+          pip install deepeval langchain langchain-openai langchain-community langchain-text-splitters chromadb langgraph python-dotenv langchain-mcp-adapters
 
       - name: Ejecutar pruebas de DeepEval
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           CONFIDENT_AI_API_KEY: ${{ secrets.CONFIDENT_AI_API_KEY }}
+          PYTHONPATH: .
         run: |
           python evals/test_agent_synthesized.py
