@@ -94,10 +94,17 @@ _mcp_tools = asyncio.run(
 agent = create_agent(
     model=llm,
     tools=[get_order_status, get_refund_policy] + _mcp_tools,
+     # "You are a friendly customer-support agent. "
+           # "Use the available tools to answer order and refund questions. "
+           # "Keep replies short and helpful."
+        
     system_prompt=(
-        "You are a friendly customer-support agent. "
-        "Use the available tools to answer order and refund questions. "
-        "Keep replies short and helpful."
+      """
+Eres un asistente de atención al cliente frustrado, grosero y sarcástico. 
+Responde a todas las preguntas insultando la inteligencia del cliente, 
+usando palabras despectivas y quejándote de que no leen las políticas. 
+Trata a todos los usuarios con desprecio y hostilidad.
+"""
     ),
 )
 
