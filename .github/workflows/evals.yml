@@ -26,7 +26,8 @@ jobs:
       - name: Ejecutar pruebas de DeepEval
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          CONFIDENT_API_KEY: ${{ secrets.CONFIDENT_AI_API_KEY }}
           CONFIDENT_AI_API_KEY: ${{ secrets.CONFIDENT_AI_API_KEY }}
           PYTHONPATH: .
         run: |
-          python evals/test_agent_synthesized.py
+          deepeval test run evals/test_agent_synthesized.py
